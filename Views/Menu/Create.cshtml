@@ -1,0 +1,149 @@
+﻿@model CoreLayout.Models.UserManagement.MenuModel
+@{
+    ViewData["Title"] = "Create";
+}
+<body>
+    <div style="padding: 30px 30px 30px 30px">
+        <h2 class="text-info">Create Menu</h2>
+
+        <form asp-action="Create" method="post">
+            <div class="pd-4 rounded border">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                </div>
+                @*<div class="form-group row">
+                        <div class="col-2">
+                            <label asp-for="Level1"> </label>
+                        </div>
+                        <div class="col-5">
+                            <input asp-for="Level1" class="form-control" />
+                            <span asp-validation-for="Level1" class="text-danger"></span>
+                        </div>
+
+                    </div>*@
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Level1"> </label>
+                    </div>
+                    <div class="col-5">
+                        <select asp-for="Level1"
+                                class="form-control"
+                                asp-items="@(new SelectList(ViewBag.ParentMenuList,"Value", "Text"))">
+                        </select>
+
+                        <span asp-validation-for="Level1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Level2"> </label>
+                    </div>
+                    <div class="col-5">
+                        <select asp-for="Level2"
+                                class="form-control"
+                                asp-items="@(new SelectList(string.Empty,"Value", "Text"))">
+                        </select>
+                        <span asp-validation-for="Level2" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Level3"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="Level3" class="form-control" value="*" />
+                        <span asp-validation-for="Level3" class="text-danger"></span>
+                    </div>
+
+                </div>
+                @*<div class="form-group row">
+                        <div class="col-2">
+                            <label asp-for="Role"> </label>
+                        </div>
+                        <div class="col-5">
+                            <select asp-for="Role"
+                                    class="form-control"
+                                    asp-items="@(new SelectList(ViewBag.Listofrole))">
+                            </select>
+                            <span asp-validation-for="Role" class="text-danger"></span>
+                        </div>
+
+                    </div>*@
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Controller"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="Controller" class="form-control" />
+                        <span asp-validation-for="Controller" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Action"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="Action" class="form-control" />
+                        <span asp-validation-for="Action" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Status"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("Status", new List<SelectListItem>
+                        {
+                             new SelectListItem{ Text="Active", Value = "Active" },
+                             new SelectListItem{ Text="InActive", Value = "InActive" },
+
+                        })
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Remarks"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="Remarks" class="form-control" />
+                        <span asp-validation-for="Remarks" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                    <a asp-action="Index" class="btn btn-success">Back to List</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Level1").on("change", function () {
+                $("#Level2").empty();
+                var ddlsource = "#Level1";
+                var url = '@Url.Content("~/")' + "Menu/GetSubMenu?ParentMenuId="+$(ddlsource).val();
+
+                $.getJSON(url, function (data) {
+                var items = '';
+                    $("#Level2").empty();
+                    $.each(data, function (i, submenu) {
+                        items += "<option value ='" + submenu.value + "'>" + submenu.text + "</option>";
+                });
+                    $('#Level2').html(items);
+            });
+            });
+        });
+
+    </script>
+}

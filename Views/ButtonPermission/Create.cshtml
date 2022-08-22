@@ -1,0 +1,234 @@
+﻿@model CoreLayout.Models.UserManagement.ButtonPermissionModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<body>
+    <div style="padding: 30px 30px 30px 30px">
+        <h4 class="text-info">Create ButtonPermission</h4>
+        <form asp-action="Create" method="post" enctype="multipart/form-data" >
+            <div class="pd-4 rounded border">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="FormName"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="FormName" class="form-control" />
+                        <span asp-validation-for="FormName" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="AddButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("AddButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                    },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="AddButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="EditButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("EditButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                    },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="EditButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="DetailButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("DetailButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                    },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="DetailButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="DeleteButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("DeleteButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                   },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="DeleteButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="DownloadButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("DownloadButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                    },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="DownloadButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="SearchButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("SearchButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                   },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="SearchButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="UploadButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("UploadButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                   },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="UploadButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="ExtraButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("ExtraButton", new List<SelectListItem>
+                   {
+                        new SelectListItem{ Text="Yes", Value = "Yes" },
+                        new SelectListItem{ Text="No", Value = "No" },
+
+                   },
+                        new { @class = "form-control" })
+                        <span asp-validation-for="ExtraButton" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="RoleId"> </label>
+                    </div>
+                    <div class="col-5">
+                        <select asp-for="RoleId"
+                                class="form-control"
+                                asp-items="@(new SelectList(ViewBag.RoleList,"Value", "Text"))">
+                        </select>
+                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="UserId"> </label>
+                    </div>
+                    <div class="col-5">
+                        <select asp-for="UserId"
+                                class="form-control"
+                                asp-items="@(new SelectList(string.Empty,"Value", "Text"))">
+                        </select>
+                        <span asp-validation-for="UserId" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Status"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("Status", new List<SelectListItem>
+                        {
+                             new SelectListItem{ Text="Active", Value = "1" },
+                             new SelectListItem{ Text="InActive", Value = "0" },
+
+                        })
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                    <a asp-action="Index" class="btn btn-success">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#RoleId").on("change", function () {
+
+                $("#UserId").empty();
+
+                var ddlsource = "#RoleId";
+                var url = '@Url.Content("~/")' + "ButtonPermission/GetUser?RoleId="+$(ddlsource).val();
+
+                $.getJSON(url, function (data) {
+                var items = '';
+                    $("#UserId").empty();
+                    $.each(data, function (i, user) {
+                        items += "<option value ='" + user.value + "'>" + user.text + "</option>";
+                });
+                    $('#UserId').html(items);
+            });
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+

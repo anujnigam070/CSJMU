@@ -1,0 +1,58 @@
+﻿@model CoreLayout.Models.Masters.StateModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<body >
+    <div style="padding: 30px 30px 30px 30px">
+        <h2 class="text-info">Edit State</h2>
+        <form asp-action="Edit" method="post">
+            <div class="pd-4 rounded border">
+                <input type="hidden" asp-for="StateId" />
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="CountryId"> </label>
+                    </div>
+                    <div class="col-5">
+                        <select asp-for="CountryId"
+                                class="form-control"
+                                asp-items="@(new SelectList(ViewBag.countryList,"Value", "Text"))">
+                        </select>
+                        <span asp-validation-for="CountryId" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="StateName"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="StateName" class="form-control" />
+                        <span asp-validation-for="StateName" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Status"> </label>
+                    </div>
+                    <div class="col-5">
+                        @Html.DropDownList("Status", new List<SelectListItem>
+                        {
+                             new SelectListItem{ Text="Active", Value = "Active" },
+                             new SelectListItem{ Text="InActive", Value = "InActive" },
+
+                        })
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" asp-route-id="@Model.StateId" class="btn btn-primary" value="Update" />
+                    <a asp-action="Index" class="btn btn-success">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    </body>

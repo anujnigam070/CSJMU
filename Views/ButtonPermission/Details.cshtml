@@ -1,0 +1,130 @@
+﻿@model CoreLayout.Models.UserManagement.ButtonPermissionModel
+@{
+    ViewData["Title"] = "Details";
+}
+<body >
+    <div style="padding: 30px 30px 30px 30px">
+        <h2 class="text-info">Button Permission Details</h2>
+        <form asp-action="Details" method="post">
+            <div class="pd-4 rounded border">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="FormName"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="FormName" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="FormName" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="AddButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="AddButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="AddButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="EditButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="EditButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="EditButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="DetailButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="DetailButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="DetailButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="DeleteButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="DeleteButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="DeleteButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="DownloadButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="DownloadButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="DownloadButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="SearchButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="SearchButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="SearchButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="UploadButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="UploadButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="UploadButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="ExtraButton"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="ExtraButton" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="ExtraButton" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="RoleName"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="RoleName" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="UserName"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="UserName" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Status"> </label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="Status" readonly="readonly" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-success">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    </body>
+

@@ -1,0 +1,50 @@
+﻿@model CoreLayout.Models.UserManagement.RegistrationRoleMapping
+@{
+    ViewData["Title"] = "Create";
+}
+<body>
+    <h2 class="text-info">Assign Role</h2>
+    <div style="padding: 30px 30px 30px 30px">
+
+        <form asp-action="Create" method="post">
+            <div class="pd-4 rounded border">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="UserName"> </label>
+                    </div>
+                    <div class="col-5">
+                        <select asp-for="RoleUserId"
+                                class="form-control"
+                                asp-items="@(new SelectList(ViewBag.UserList,"Value", "Text"))">
+                        </select>
+
+                        <span asp-validation-for="UserId" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="RoleName"> </label>
+                    </div>
+                    <div class="col-5">
+                        <select asp-for="RoleId"
+                                class="form-control"
+                                asp-items="@(new SelectList(ViewBag.RoleList,"Value", "Text"))">
+                        </select>
+
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                    <a asp-action="Index" class="btn btn-success">Back to List</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
